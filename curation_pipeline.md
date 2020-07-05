@@ -49,7 +49,7 @@ raxmlHPC-PTHREADS-SSE3 -T 8 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $10
 ```
   
 ### 1.5. Re-ordering alignment
-The resulting alignment was ordered following the phylogenetic tree in order to ease the manual correction of misalignments with the function ‘reorderFastaTree’ from the script ‘fastaFunctions.R’ (recommended to open it in R studio).  
+The resulting alignment was ordered following the phylogenetic tree in order to ease the manual correction of misalignments with the function ‘reorderFastaTree’ from the script ‘[fastaFunctions.R](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/scripts/fastaFunctions.R)’ (*recommended to open it in R studio*).  
 Steps **1.2** to **1.5** were repeated until the phylogenetic tree had a consistent topology and in agreement with previous studies (Decelle et al. 2012; Biard et al. 2015; Sandin et al. 2019; 2020). Phylogenetic trees were visualized in FigTree (version 1.4.3). Resulting alignment matrix was set as reference alignment for further steps.
 
 <sub>*Note*: Steps **1.1** to **1.3** were carried out independently for 18S and 28S rDNA genes. Then both genes were concatenated for step **1.4** and further.</sub>
@@ -84,7 +84,7 @@ Using as REFERENCE sequences the complete PR2 v4.11.0 database and as NEW those 
   
   
 ### 4.3. Blasting
-A third in-house method was also used in order to detect as many chimeric or problematic sequences as possible. Here I blasted against NCBI independently the first and the last 300 bp of each sequence and compared the results. If there were less than 20 exact matches among the first 100 matches, the sequence was considered as *maybe* chimeric. If there are no exact matches among the first 100 matches, or it matches only with itself, the sequence was detected as *chimeric*. For further details see the script ‘chimera_blast.R’ (recommended to open it in Rstudio). Sequences detected either as maybe chimeric or chimeric were noted and manually checked in downstream phylogenetic assessments.
+A third in-house method was also used in order to detect as many chimeric or problematic sequences as possible. Here I blasted against NCBI independently the first and the last 300 bp of each sequence and compared the results. If there were less than 20 exact matches among the first 100 matches, the sequence was considered as *maybe* chimeric. If there are no exact matches among the first 100 matches, or it matches only with itself, the sequence was detected as *chimeric*. For further details see the script ‘[chimera_blast.R](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/scripts/chimera_blast.R)’ (*recommended to open it in Rstudio*). Sequences detected either as maybe chimeric or chimeric were noted and manually checked in downstream phylogenetic assessments.
   
 ---
 ## Step 5. Annotating sequences
