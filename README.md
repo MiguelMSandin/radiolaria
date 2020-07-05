@@ -4,6 +4,7 @@ Following the steps described in [curation_pipeline.md](https://github.com/Migue
 
 Sequence names in the fasta file have been given the following structure separated by "|":  
 Class, Order, Superfamily, Family, Species, Symbiotic_relationships, genbank_accession  
+(e.g.: Polycystinea|Nassellaria|Pterocorythoidea|Pterocorythidae|Pterocorys_sp.|host_symbionts|MK396942)  
 For further details, please see [Step 8](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md#step-8-final-taxonomic-annotation-and-corrections) and [summary and concluding remarks](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md#summary-and-concluding-remarks) from the [curation pipeline](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md).
 
 ## Further uploads and improvemnts
