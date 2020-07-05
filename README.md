@@ -7,8 +7,8 @@ Class, Order, Superfamily, Family, Species, Symbiotic_relationships, genbank_acc
 >e.g.:  
 >  Polycystinea|Nassellaria|Pterocorythoidea|Pterocorythidae|Pterocorys_sp.|host_symbionts|MK396942  
 >  Acantharea|C|C|C1|Gigartacon_muelleri|do_not_host_symbionts|JN811220
->  RAD-B|RAD-B_X|Group-IV|Group-IVd|Group-IVd_X_sp.||KJ757405
->  Polycystinea|Spumellaria|Centrocuboidea|Excentroconchidae|Excentroconchidae_X_sp.||GU822402
+>  RAD-B|RAD-B_X|Group-IV|Group-IVd|Group-IVd_X_sp.||KJ757405  
+>  Polycystinea|Spumellaria|Centrocuboidea|Excentroconchidae|Excentroconchidae_X_sp.||GU822402  
 
 For further details, see [Step 8](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md#step-8-final-taxonomic-annotation-and-corrections) and [summary and concluding remarks](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md#summary-and-concluding-remarks) from the [curation pipeline](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md).  
 
