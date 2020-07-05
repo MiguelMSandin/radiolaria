@@ -56,7 +56,7 @@ Steps **1.2** to **1.5** were repeated until the phylogenetic tree had a consist
   
 ---
 ## Step 2. Creating a reference backbone phylogeny
-I continued adding the rest of publicly available and morphologically identified sequences detailed in the reference phylogenetic frameworks to the previous reference alignment (from step 1) using the function ‘--add’ from MAFFT and the FFT-NS-2 algorithm with a high gap opening penalty (‘--op 5’) as follows:
+I continued adding the rest of publicly available and morphologically identified sequences detailed in the reference phylogenetic frameworks to the previous reference alignment (from **step 1**) using the function ‘--add’ from MAFFT and the FFT-NS-2 algorithm with a high gap opening penalty (‘--op 5’) as follows:
 ```
 mafft --thread 2 --inputorder --op 5.0 --add FILE2 --6merpair --maxiterate 1000 FILE_alignedC > FILE2_aligned
 ```
@@ -64,7 +64,7 @@ And repeating steps **1.2** to **1.5** until consistent phylogenetic tree.
   
 ---
 ## Step 3. Download all publicly available environmental sequences
-Reference 18S rDNA gene sequences from step 2 were ‘blasted’ against NCBI to retrieve all publicly available environmental sequences of the 18S rDNA gene that belong to Radiolaria, as detailed in ‘Step 6’ of [EukRef](http://eukref.org/curation-pipeline-overview/). Previous versions of [PR2](https://github.com/pr2database) (Guillou et al., 2013) were also blasted against NCBI in order to retrieve sequences not belonging to either Acantharea, Collodaria, Nassellaria or Spumellaria (i.e.; Rad-A, Rad-B, Rad-C or Radiolaria_X). Final dataset was checked in order to remove duplicates and other regions of the rDNA (except for the partial 28S rDNA gene that was left and concatenated, when available, to increase phylogenetic signal).
+Reference 18S rDNA gene sequences from **step 2** were ‘blasted’ against NCBI to retrieve all publicly available environmental sequences of the 18S rDNA gene that belong to Radiolaria, as detailed in ‘Step 6’ of [EukRef](http://eukref.org/curation-pipeline-overview/). Previous versions of [PR2](https://github.com/pr2database) (Guillou et al., 2013) were also blasted against NCBI in order to retrieve sequences not belonging to either Acantharea, Collodaria, Nassellaria or Spumellaria (i.e.; Rad-A, Rad-B, Rad-C or Radiolaria_X). Final dataset was checked in order to remove duplicates and other regions of the rDNA (except for the partial 28S rDNA gene that was left and concatenated, when available, to increase phylogenetic signal).
 
 ---
 ## Step 4. Check for chimeras
@@ -80,7 +80,7 @@ mothur "#chimera.uchime(fasta=NEW, reference=REFERENCE)"
 vsearch --uchime_ref NEW --db REFERENCE --nonchimeras NEW_noChim --borderline NEW_poChim --chimeras NEW_Chim
 ```
   
-Using as REFERENCE sequences the complete PR2 v4.11.0 database and as NEW those sequences extracted from step 3. Sequences detected as chimeras by any of the two methods were automatically removed and no longer considered in downstream analysis.
+Using as REFERENCE sequences the complete PR2 v4.11.0 database and as NEW those sequences extracted from **step 3**. Sequences detected as chimeras by any of the two methods were automatically removed and no longer considered in downstream analysis.
   
   
 ### 4.3. Blasting
@@ -95,7 +95,7 @@ vsearch --usearch_global ENVIRONMENTAL --db REFERENCE --blast6out OUTPUT --log O
   
 ---
 ## Step 6. Adding environmental sequences to the backbone phylogeny
-Environmental annotated sequences from step 5 were added to the reference alignment created in step 2. These sequences were gradually added according to their ‘reliability’ so it is easier to identify chimeric, *dubious*\* or bad quality sequences: 
+Environmental annotated sequences from **step 5** were added to the reference alignment created in **step 2**. These sequences were gradually added according to their ‘reliability’ so it is easier to identify chimeric, *dubious*\* or bad quality sequences: 
 1. Firstly, were added those environmental sequences retrieved in previous studies and phylogenetically placed in a reference phylogenetic framework (Decelle et al. 2012; Biard et al. 2015; Sandin et al. 2019; 2020). 
 2. Secondly, were added these sequences that do not correspond within Acantharea, Collodaria, Nassellaria or Spumellaria (i.e.; Rad-A, Rad-B, Rad-C and Radiolaria_X). 
 3. Thirdly, and lastly, the rest of the sequences retrieved.  
@@ -139,7 +139,6 @@ Repeat steps **6.3** to **6.5** until consistent phylogeny.
 ---
 ## Step 7. Last confirmatory check
 All environmental sequences added in **step 6** that passed the stringent criteria were (re-)aligned to the backbone phylogenetic framework from **step 2** for a last phylogenetic assessment as described in steps **6.1** to **6.3**. And, if needed, step **6.3** was repeated after step **6.4** and manual checking and correction of the alignment in AliView (version 1.26).  
-After this step we have a backbone phylogenetic framework of all the described diversity of Radiolaria to which we have aligned the rest of the publicly available environmental sequences. All this gathers fully reliable sequences representing the biggest part of the diversity of Radiolaria, that we can trust and use for phylogenetic reconstruction, phylogenetic placement of short reads or annotation of the still to come full length environmental rDNA sequences from Oxford Nanopore Technologies or Pac-Bio.  
   
 ---
 ## Step 8. Final taxonomic annotation and corrections
@@ -168,6 +167,8 @@ In total, 4569 publicly available sequences associated to Radiolaria have been t
 - **Updating Spumellaria** sequences after Sandin et al. (2020): 3017 sequences.  
 - **Finer taxonomic resolution of environmental clades** RAD-A (107 sequences), RAD-B (455 sequences) and RAD-C (50 sequences).  
 - Up to 24 sequences, phylogenetically related to Acantharia, were not possible to be assigned to any previously described clade, and were annotated as “**Radiolaria_X**”.  
+
+Here we built a backbone phylogenetic framework of all the described diversity of Radiolaria to which we have aligned the rest of publicly available environmental sequences, after removing problematic sequences (chimeras, dubious or bad quality). All this gathers fully reliable sequences representing the biggest part of the diversity of Radiolaria, that we can trust and use for phylogenetic reconstruction, phylogenetic placement of short reads or annotation of the still to come full length environmental rDNA sequences from Oxford Nanopore Technologies or Pac-Bio.  
   
 Lastly, I would like to mention that taxonomic hierarchy may differ from one reference to another. For example in Cavalier-smith (2017) Polycystinea (gathering Spumellaria, Nassellaria and Collodaria)  holds a “superclass” position along with Spasmaria (gathering Acantharea and Sticholonche), and  in Adl et al. (2019) Polycystinea holds a “class” position along with Acantharea and Taxopodida. You may therefore select specific taxa according to the scope of your study bearing in mind these differences in taxonomic hierarchy. 
   
