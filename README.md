@@ -6,7 +6,7 @@ Sequence names in the fasta file have been given the following structure separat
 Class, Order, Superfamily, Family, Species, Symbiotic_relationships, genbank_accession  
 >e.g.:  
 >  Polycystinea|Nassellaria|Pterocorythoidea|Pterocorythidae|Pterocorys_sp.|host_symbionts|MK396942  
->  Acantharea|C|C|C1|Gigartacon_muelleri|do_not_host_symbionts|JN811220
+>  Acantharea|C|C|C1|Gigartacon_muelleri|do_not_host_symbionts|JN811220  
 >  RAD-B|RAD-B_X|Group-IV|Group-IVd|Group-IVd_X_sp.||KJ757405  
 >  Polycystinea|Spumellaria|Centrocuboidea|Excentroconchidae|Excentroconchidae_X_sp.||GU822402  
 
