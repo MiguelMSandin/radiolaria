@@ -159,7 +159,7 @@ Environmental clades (Rad-A, Rad-B, Rad-C and Radiolaria_X) were left as previou
   
 ---
 ## Summary and concluding remarks
-In total, 4569 publicly available sequences associated to Radiolaria have been taxonomically curated and annotated. From these, 4556 are longer than 500bp and have less than 20 ambiguities and 289 sequences are new regarding older PR2 versions (as of v4.11.0). Main changes are:  
+In total, 4569 publicly available sequences associated to Radiolaria have been taxonomically curated and annotated [(files/pr2_Radiolaria_MMS.xlsx)](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_Radiolaria_MMS.xlsx). From these, 4556 are longer than 500bp and have less than 20 ambiguities [(files/pr2_rads_updated.fasta)](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_rads_updated.fasta) and 289 sequences are new regarding older PR2 versions (as of v4.11.0). Main changes are:  
 - **Removing of chimeric, bad quality or dubious sequences**: In total 391 sequences were manually removed, mainly from environmental clades (such as Acantharea_1, Acantharea_3, Rad-B, Radiolaria_X) and Liosphaeroidea (Spumellaria), among others.  
 - **Updating Acantharea** sequences after Decelle et al. (2012): 457 sequences.  
 - Formal **inclusion of Collodaria within Nassellaria** (after Nakamura et al., 2020 and unpublished results from Miguel M. Sandin PhD thesis, 2019).  
@@ -170,7 +170,10 @@ In total, 4569 publicly available sequences associated to Radiolaria have been t
 
 Here we built a backbone phylogenetic framework of all the described diversity of Radiolaria to which we have aligned the rest of publicly available environmental sequences, after removing problematic sequences (chimeras, dubious or bad quality). All this gathers fully reliable sequences representing the biggest part of the diversity of Radiolaria, that we can trust and use for phylogenetic reconstruction, phylogenetic placement of short reads or annotation of the still to come full length environmental rDNA sequences from Oxford Nanopore Technologies or Pac-Bio.  
   
+These sequences have been deposited in PR2 v5.0.0 (to be published).  
+  
 Lastly, I would like to mention that taxonomic hierarchy may differ from one reference to another. For example in Cavalier-smith (2017) Polycystinea (gathering Spumellaria, Nassellaria and Collodaria)  holds a “superclass” position along with Spasmaria (gathering Acantharea and Sticholonche), and  in Adl et al. (2019) Polycystinea holds a “class” position along with Acantharea and Taxopodida. You may therefore select specific taxa according to the scope of your study bearing in mind these differences in taxonomic hierarchy. 
+  
   
 ---
 ## References
