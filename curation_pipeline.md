@@ -41,11 +41,11 @@ trimal -in FILE_alignedC -out FILE_alignedC_trimmed -gt 0.3
 Two (semi-replicate) analysis were used to look for agreement -or not- and resolve possible dubious or low statistically supported groups/patterns using RAxML:
 #### 1.4.1 GTR+CAT as substitution model and 1000 bootstraps (BS)
 ```
-raxmlHPC-PTHREADS-SSE3 -T 8 -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N 1000 -n FILE_alignedC_trimmed_CAT -s FILE_alignedC_trimmed
+raxmlHPC-PTHREADS-SSE3 -T 5 -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N 1000 -n FILE_alignedC_trimmed_CAT -s FILE_alignedC_trimmed
 ```
 #### 1.4.2. GTR+GAMMA with 1000 BS
 ```
-raxmlHPC-PTHREADS-SSE3 -T 8 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $1000 -n FILE_alignedC_trimmed_GAMMA -s FILE_alignedC_trimmed
+raxmlHPC-PTHREADS-SSE3 -T 5 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $1000 -n FILE_alignedC_trimmed_GAMMA -s FILE_alignedC_trimmed
 ```
   
 ### 1.5. Re-ordering alignment
@@ -119,12 +119,12 @@ Explore phylogenetic patterns, long branches, branches in unresolved positions, 
   
 #### 6.3.1. RAxML GTR+CAT 100 BS
 ```
-raxmlHPC-PTHREADS-SSE3 -T 16 -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N 100 -n FILEX_aligned_trimmed_CAT -s  FILEX_aligned_trimmed
+raxmlHPC-PTHREADS-SSE3 -T 6 -m GTRCAT -c 25 -p $RANDOM -x $(date +%s) -d -f a -N 100 -n FILEX_aligned_trimmed_CAT -s  FILEX_aligned_trimmed
 ```
   
 #### 6.3.2. RAxML GTR+GAMMA 100 BS
 ```
-raxmlHPC-PTHREADS-SSE3 -T 16 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $100 -n FILEX_aligned_trimmed_GAMMA -s  FILEX_aligned_trimmed
+raxmlHPC-PTHREADS-SSE3 -T 6 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $100 -n FILEX_aligned_trimmed_GAMMA -s  FILEX_aligned_trimmed
 ```
   
 ### 6.4. Reorder fasta 
