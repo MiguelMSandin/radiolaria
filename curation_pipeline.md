@@ -173,7 +173,7 @@ Here we built a backbone phylogenetic framework of all the described diversity o
   
 These sequences have been deposited in PR2 v5.0.0 (to be published).  
   
-Lastly, I would like to mention that taxonomic hierarchy may differ from one reference to another. For example in Cavalier-smith (2017) Polycystinea (gathering Spumellaria, Nassellaria and Collodaria)  holds a “superclass” position along with Spasmaria (gathering Acantharea and Sticholonche), and  in Adl et al. (2019) Polycystinea holds a “class” position along with Acantharea and Taxopodida. You may therefore select specific taxa according to the scope of your study bearing in mind these differences in taxonomic hierarchy. 
+Lastly, I would like to mention that **taxonomic hierarchy may differ from one reference to another**. For example in Cavalier-smith (2017) Polycystinea (gathering Spumellaria, Nassellaria and Collodaria)  holds a “superclass” position along with Spasmaria (gathering Acantharea and Sticholonche), and  in Adl et al. (2019) Polycystinea holds a “class” position along with Acantharea and Taxopodida. You may therefore select specific taxa according to the scope of your study bearing in mind these differences in taxonomic hierarchy. 
   
   
 ---
