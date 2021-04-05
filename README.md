@@ -3,7 +3,7 @@
 Following the steps described in [curation_pipeline.md](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md), here you can find a **curated reference fasta file of radiolaria sequences** in [files/pr2_rads_updated.fasta](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_rads_updated.fasta) and the detailed associated information table in [files/pr2_Radiolaria_MMS.xlsx](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_Radiolaria_MMS.xlsx).
 
 Sequence names in the fasta file have been given the following structure separated by "|":  
-Class, Order, Superfamily, Family, Species, Symbiotic_relationships, genbank_accession  
+Class, Order, Superfamily, Family, Species, Symbiotic_relationships (if known), genbank_accession  
 >e.g.:  
 >  Polycystinea|Nassellaria|Pterocorythoidea|Pterocorythidae|Pterocorys_sp.|host_symbionts|MK396942  
 >  Acantharea|C|C|C1|Gigartacon_muelleri|do_not_host_symbionts|JN811220  
