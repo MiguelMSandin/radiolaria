@@ -1,4 +1,5 @@
 # Taxonomically curated and annotated publicly available 18S rDNA gene sequences of Radiolaria
+## Implemented in [PR2 v4.14.0](https://github.com/pr2database/pr2database/releases/tag/v4.14.0)
 
 Following the steps described in [curation_pipeline.md](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md), here you can find a **curated reference fasta file of radiolaria sequences** in [files/pr2_rads_updated.fasta](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_rads_updated.fasta) and the detailed associated information table in [files/pr2_Radiolaria_MMS.xlsx](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_Radiolaria_MMS.xlsx).
 
@@ -18,5 +19,5 @@ For further details, see [Step 8](https://github.com/MiguelMSandin/Radiolaria_re
 - Complete or partial (D1+D2) 28S rDNA gene reference sequences.
 - Manually corrected reference alignment of most relevant genetic diversity (for phylogenetic reconstruction purposes).
 - Editable phylogenetic trees.
-- Easily accesible R scripts for its implementation in the terminal console (as Rscript).
 - Correct "Superfamily" taxonomy
+
