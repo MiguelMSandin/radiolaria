@@ -50,7 +50,7 @@ raxmlHPC-PTHREADS-SSE3 -T 5 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $10
 ```
   
 ### 1.5. Re-ordering alignment
-The resulting alignment was ordered following the phylogenetic tree in order to ease the manual correction of misalignments with the function `[fastaReorder.py](https://github.com/MiguelMSandin/random/blob/main/phylogenetics/fastaReorder.py)` from the repository `[random](https://github.com/MiguelMSandin/random)`.  
+The resulting alignment was ordered following the phylogenetic tree in order to ease the manual correction of misalignments with the function *[fastaReorder.py](https://github.com/MiguelMSandin/random/blob/main/phylogenetics/fastaReorder.py)* from the repository *[random](https://github.com/MiguelMSandin/random)*.  
 Steps **1.2** to **1.5** were repeated until the phylogenetic tree had a consistent topology and in agreement with previous studies ([Decelle et al. 2012](https://www.sciencedirect.com/science/article/abs/pii/S1434461011000988); [Biard et al. 2015](https://www.sciencedirect.com/science/article/pii/S1434461015000231); [Sandin et al. 2019](https://www.sciencedirect.com/science/article/pii/S143446101830110X); [2021](https://www.sciencedirect.com/science/article/pii/S1434461021000158)). Phylogenetic trees were visualized in FigTree (version 1.4.3). Resulting alignment matrix was set as reference alignment for further steps.
 
 <sub>*Note*: Steps **1.1** to **1.3** were carried out independently for 18S and 28S rDNA genes. Then both genes were concatenated for step **1.4** and further.</sub>
