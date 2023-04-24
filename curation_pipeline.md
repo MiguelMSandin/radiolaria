@@ -24,7 +24,7 @@ miguelmendezsandin@gmail.com
 I have used as reference phylogenetic frameworks the last morpho-molecular classifications of **Acantharea** ([Decelle et al. 2012](https://www.sciencedirect.com/science/article/abs/pii/S1434461011000988)), **Collodaria** ([Biard et al. 2015](https://www.sciencedirect.com/science/article/pii/S1434461015000231)), **Nassellaria** ([Sandin et al. 2019](https://www.sciencedirect.com/science/article/pii/S143446101830110X)) and **Spumellaria** ([Sandin et al. 2021](https://www.sciencedirect.com/science/article/pii/S1434461021000158)). Following these phylogenetic works I have selected 2 to 4-6 representative sequences of each clade (both morphologically described and environmental) to build a reference alignment (in total 211 sequences), in order to gather the most important and detailed genetic diversity. Such sequences were manually selected due to their high quality and their length, comprising the full 18S rDNA gene (when available). As showed in the reference phylogenetic frameworks, the partial 28S (D1+D2) rDNA gene was also used and concatenated in order to increase phylogenetic signal. 
   
 ### 1.1. Align sequences
-Sequences were aligned with MAFFT using the L-INS-i algorithm (‘--localpair’) and 1000 iterative refinement cycles for high accuracy:
+Sequences were aligned with MAFFT using the L-INS-i algorithm (`--localpair`) and 1000 iterative refinement cycles for high accuracy:
 ```
 mafft --localpair --maxiterate 1000 FILE > FILE_aligned
 ```
@@ -50,14 +50,14 @@ raxmlHPC-PTHREADS-SSE3 -T 5 -m GTRGAMMA -p $RANDOM -x $(date +%s) -d -f a -N $10
 ```
   
 ### 1.5. Re-ordering alignment
-The resulting alignment was ordered following the phylogenetic tree in order to ease the manual correction of misalignments with the function ‘[fastaReorder.py](https://github.com/MiguelMSandin/fasta-functions/blob/master/scripts/fastaReorder.py)’ from the repository ‘[fasta-functions](https://github.com/MiguelMSandin/fasta-functions/)’.  
-Steps **1.2** to **1.5** were repeated until the phylogenetic tree had a consistent topology and in agreement with previous studies (Decelle et al. 2012; Biard et al. 2015; Sandin et al. 2019; 2020). Phylogenetic trees were visualized in FigTree (version 1.4.3). Resulting alignment matrix was set as reference alignment for further steps.
+The resulting alignment was ordered following the phylogenetic tree in order to ease the manual correction of misalignments with the function `[fastaReorder.py](https://github.com/MiguelMSandin/fasta-functions/blob/master/scripts/fastaReorder.py)` from the repository `[random](https://github.com/MiguelMSandin/random)`.  
+Steps **1.2** to **1.5** were repeated until the phylogenetic tree had a consistent topology and in agreement with previous studies ([Decelle et al. 2012](https://www.sciencedirect.com/science/article/abs/pii/S1434461011000988); [Biard et al. 2015](https://www.sciencedirect.com/science/article/pii/S1434461015000231); [Sandin et al. 2019](https://www.sciencedirect.com/science/article/pii/S143446101830110X); [2021](https://www.sciencedirect.com/science/article/pii/S1434461021000158)). Phylogenetic trees were visualized in FigTree (version 1.4.3). Resulting alignment matrix was set as reference alignment for further steps.
 
 <sub>*Note*: Steps **1.1** to **1.3** were carried out independently for 18S and 28S rDNA genes. Then both genes were concatenated for step **1.4** and further.</sub>
   
 ---
 ## Step 2. Creating a reference backbone phylogeny
-I continued adding the rest of publicly available and morphologically identified sequences detailed in the reference phylogenetic frameworks to the previous reference alignment (from **step 1**) using the function ‘--add’ from MAFFT and the FFT-NS-2 algorithm with a high gap opening penalty (‘--op 5’) as follows:
+I continued adding the rest of publicly available and morphologically identified sequences detailed in the reference phylogenetic frameworks to the previous reference alignment (from **step 1**) using the function `--add` from MAFFT and the FFT-NS-2 algorithm with a high gap opening penalty (`--op 5`) as follows:
 ```
 mafft --thread 2 --inputorder --op 5.0 --add FILE2 --6merpair --maxiterate 1000 FILE_alignedC > FILE2_aligned
 ```
@@ -96,7 +96,7 @@ vsearch --usearch_global ENVIRONMENTAL --db REFERENCE --blast6out OUTPUT --log O
   
 ---
 ## Step 6. Adding environmental sequences to the backbone phylogeny
-Environmental annotated sequences from **step 5** were added to the reference alignment created in **step 2**. These sequences were gradually added according to their ‘reliability’ so it is easier to identify chimeric, *dubious*\* or bad quality sequences: 
+Environmental annotated sequences from **step 5** were added to the reference alignment created in **step 2**. These sequences were gradually added according to their ‘reliability’ so it is easier to identify chimeric, *dubious* or bad quality sequences: 
 1. Firstly, were added those environmental sequences retrieved in previous studies and phylogenetically placed in a reference phylogenetic framework ([Decelle et al. 2012](https://www.sciencedirect.com/science/article/abs/pii/S1434461011000988); [Biard et al. 2015](https://www.sciencedirect.com/science/article/pii/S1434461015000231); [Sandin et al. 2019](https://www.sciencedirect.com/science/article/pii/S143446101830110X); [2021](https://www.sciencedirect.com/science/article/pii/S1434461021000158)). 
 2. Secondly, were added these sequences that do not correspond within Acantharea, Collodaria, Nassellaria or Spumellaria (i.e.; Rad-A, Rad-B, Rad-C and Radiolaria_X). 
 3. Thirdly, and lastly, the rest of the sequences retrieved.  
