@@ -1,27 +1,27 @@
-group	subgroup	genera	Node	min	max	Mean	sd
-Root				1100	2200		
-Spumellaria	Spumellaria		Spumellaria	509.9	566.5	515	10
-Spumellaria	Clade-L	Spongopyle	Spongopyle	33.9	37.8	35.85	1.2
-Spumellaria	Clade-L	Calcaromma	Calcaromma	0	1	0.5	0.3
-Spumellaria	Hexastyloidea-group		Hexastyloidea-group	239.6	266.2	242	10
-Spumellaria	Hexastyloidea-group	Hollandosphaeridae	Hollandosphaeridae	0	1	0.5	0.3
-Spumellaria	Cladococcoidea 	Cladococcus	Cladococcus	59.2	64.7	61.95	1.7
-Spumellaria	Rhizosphaeroidea		Rhizosphaeroidea	146.5	162.8	154.65	5
-Spumellaria	Excentroconhidae		Excentroconchidae	22.6	22.7	22.65	0.2
-Spumellaria	Spongodiscoidea	Dictyocoryne	Dictyocoryne	41.2	47.8	44.5	2
-Spumellaria	Spongosphaeroidea	Spongosphaera	Spongosphaera	7.24	11.6	9.42	1.34
-Spumellaria	Clade-M		Clade-M	89.8	106.7	97	4.4
-Spumellaria	Clade-M	Tetrapyle	Tetrapyle	3.6	5.3	4.45	0.55
-Spumellaria	Lithocyclioidea		Lithocyclioidea	44.6	49.5	47.05	1.5
-Nassellaria	Nassellaria		Nassellaria	380	539.5	460	48.5
-Nassellaria	Plectopyramidoidea		Plectopyramidoidea	242.6	269.5	256	10
-Nassellaria	Plagiacanthoidea		Plagiacanthoidea	172	250	211	24
-Nassellaria	Plagiacanthoidea	Lipmanella	Lipmanella	41.2	47.8	44.5	2
-Nassellaria	Plagiacanthoidea	Peromelissa	Peromelissa	37.8	41.2	39.5	1
-Nassellaria	Artostrobioidea 		Artostrobioidea 	170	200	185	9
-Nassellaria	Acanthodesmioidea		Acanthodesmioidea	60	72.6	66	3.65
-Nassellaria	Pterocorythoidea		Pterocorythoidea	56.4	65.3	60.85	2.7
-Nassellaria	Collosphaeridae		Collosphaeridae	26.9	36	31.45	2.8
-Nassellaria	Collosphaeridae	Siphonosphaera	Siphonosphaera	11.63	13.82	12.7	0.65
-Nassellaria	Collophidiidae	Collophidium	Collophidium	0	1	0.5	0.3
-Nassellaria	Sphaerozoidae		Sphaerozoidae	18.5	23	20.75	1.4
+Subgroup	Node	Min	Max	Mean	SD
+Root	Root	1100	2200	NA	NA
+Spumellaria	Spumellaria	509.9	566.5	1.45	1.6
+Clade-L	Spongopyle	33.9	37.8	0.29	0.44
+Clade-L	Calcaromma	0	1	0.5	0.25
+Hexastyloidea-group	Hexastyloidea-group	239.6	266.2	1.12	1.27
+Hexastyloidea-group	Hollandosphaeridae	0	1	0.5	0.25
+Cladococcoidea	Cladococcus	59.2	64.7	0.44	0.59
+Rhizosphaeroidea	Rhizosphaeroidea	146.5	162.8	0.91	1.06
+Excentroconhidae	Excentroconchidae	22.6	22.7	0.15	0.25
+Spongodiscoidea	Dictyocoryne	41.2	47.8	0.52	0.67
+Spongosphaeroidea	Spongosphaera	7.24	11.6	0.34	0.49
+Clade-M	Clade-M	89.8	106.7	0.93	1.08
+Clade-M	Tetrapyle	3.6	5.3	0.05	0.45
+Lithocyclioidea	Lithocyclioidea	44.6	49.5	0.39	0.54
+Nassellaria	Nassellaria	380	539.5	460	49
+Plectopyramidoidea	Plectopyramidoidea	242.6	269.5	256	10
+Plagiacanthoidea	Plagiacanthoidea	172	250	211	24
+Plagiacanthoidea	Lipmanella	41.2	47.8	0.52	0.67
+Plagiacanthoidea	Peromelissa	37.8	41.2	0.23	0.38
+Artostrobioidea	Artostrobioidea	170	200	1.18	1.33
+Acanthodesmioidea	Acanthodesmioidea	60	72.6	0.8	0.95
+Pterocorythoidea	Pterocorythoidea	56.4	65.3	0.65	0.8
+Collosphaeridae	Collosphaeridae	26.9	36	0.66	0.81
+Collosphaeridae	Siphonosphaera	11.63	13.82	0.04	0.19
+Collophidiidae	Collophidium	0	1	0.5	0.25
+Sphaerozoidae	Sphaerozoidae	18.5	23	0.35	0.5
