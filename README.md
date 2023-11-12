@@ -1,4 +1,8 @@
-# Taxonomically curated and annotated publicly available 18S rDNA gene sequences of Radiolaria
+# Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria
+  
+In this repository you will find all methods, resources and scripts used and described in the following paper:
+REFERENCE  
+  
 ## Implemented in [PR2 v4.14.0](https://github.com/pr2database/pr2database/releases/tag/v4.14.0)
 
 Following the steps described in [curation_pipeline.md](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md), here you can find a **curated reference fasta file of radiolaria sequences** in [files/pr2_rads_updated.fasta](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_rads_updated.fasta) and the detailed associated information table in [files/pr2_Radiolaria_MMS.xlsx](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_Radiolaria_MMS.xlsx).
