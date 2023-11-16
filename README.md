@@ -3,32 +3,23 @@
 In this repository you will find all methods, resources and scripts used and described in the following paper:
 **REFERENCE**  
   
+Briefly:  
+## Taxonomic curation of environmental sequences associated to Radiolaria  
+All environmental 18S rDNA sequences publicly available (as July 2020) were taxonomically curated as detailed in the [curation_pipeline.md](https://github.com/MiguelMSandin/radiolaria/blob/master/curation_pipeline.md) and publicly accessible in the Protist Ribosomal Reference (PR2) database (from [v4.14.0](https://github.com/pr2database/pr2database/releases/tag/v4.14.0)).  
   
+## Alignments for phylogenetic analyses  
+in the folder [alignments](https://github.com/MiguelMSandin/radiolaria/tree/master/alignments) there are:  
+- An alignment containing [18S rDNA](https://github.com/MiguelMSandin/radiolaria/blob/master/alignments/all_18S_filtered_align-linsi.fasta.gz) sequences (untrimmed) for future references  
+- An alignment containing [28S rDNA](https://github.com/MiguelMSandin/radiolaria/blob/master/alignments/all_28S_filtered_align-linsi.fasta.gz) sequences (untrimmed) for future references  
+- The [concatenated alignment](https://github.com/MiguelMSandin/radiolaria/blob/master/alignments/all_filtered_align-linsi_trim05.fasta.gz) used to infer the main phylogeny of Radiolaria (trimmed)  
   
-  
-  
-  
-  
-  
-## Implemented in [PR2 v4.14.0](https://github.com/pr2database/pr2database/releases/tag/v4.14.0)
+## Editable trees resulted from phylogenetic analyses  
+- 
+- 
+- 
+- 
 
-Following the steps described in [curation_pipeline.md](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md), here you can find a **curated reference fasta file of radiolaria sequences** in [files/pr2_rads_updated.fasta](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_rads_updated.fasta) and the detailed associated information table in [files/pr2_Radiolaria_MMS.xlsx](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/files/pr2_Radiolaria_MMS.xlsx).
+## Resources  
 
-Sequence names in the fasta file have been given the following structure separated by "|":  
-Class, Order, Superfamily, Family, Species, Symbiotic_relationships (if known), genbank_accession  
->e.g.:  
->  Polycystinea|Nassellaria|Pterocorythoidea|Pterocorythidae|Pterocorys_sp.|host_symbionts|MK396942  
->  Acantharea|C|C|C1|Gigartacon_muelleri|do_not_host_symbionts|JN811220  
->  RAD-B|RAD-B_X|Group-IV|Group-IVd|Group-IVd_X_sp.||KJ757405  
->  Polycystinea|Spumellaria|Centrocuboidea|Excentroconchidae|Excentroconchidae_X_sp.||GU822402  
-
-For further details, see [Step 8](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md#step-8-final-taxonomic-annotation-and-corrections) and [summary and concluding remarks](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md#summary-and-concluding-remarks) from the [curation pipeline](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/curation_pipeline.md).  
-
----
-
-## Further uploads and improvemnts
-- Complete or partial (D1+D2) 28S rDNA gene reference sequences.
-- Manually corrected reference alignment of most relevant genetic diversity (for phylogenetic reconstruction purposes).
-- Editable phylogenetic trees.
-- Correct "Superfamily" taxonomy
+## scripts  
 
