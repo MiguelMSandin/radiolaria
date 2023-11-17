@@ -17,11 +17,11 @@ In the folder [alignments](https://github.com/MiguelMSandin/radiolaria/tree/mast
 Here there are the phylogenetic trees in nexus format of the different phylogenetic analyses implemented in [RAxML](https://github.com/stamatak/standard-RAxML) under the nucleotide substitution model GTR+CAT over 1000 bootstraps, [RAxML-ng](https://github.com/amkozlov/raxml-ng) under the substitution model GTR+G and a third approach implemented in [IQ-Tree](http://www.iqtree.org/) under the model GTR+F+R10 (chosen based on the highest Bayesian Information Criterion from modelFinder):  
 - [all_filtered_align-linsi_trim05_raxmlCAT.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_raxmlCAT.tre)  
 - [all_filtered_align-linsi_trim05_raxml-ngGTR.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_raxml-ngGTR.tre)  
-- [all_filtered_align-linsi_trim05_iqtree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_iqtree.tre)
+- [all_filtered_align-linsi_trim05_iqtree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_iqtree.tre)  
   
-There are also available the fossil-calibrated trees obtained with [MCMCTree](http://abacus.gene.ucl.ac.uk/software/MCMCtree.Tutorials.pdf) from the [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) package and with [BEAST2](http://www.beast2.org/):
-- [all_filtered_align-linsi_trim05_mc09_mcmcTree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_mc09_mcmcTree.tre)
-- [all_filtered_align-linsi_trim05_mc09_beast2.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_mc09_beast2.tre)
+There are also available the fossil-calibrated trees obtained with [MCMCTree](http://abacus.gene.ucl.ac.uk/software/MCMCtree.Tutorials.pdf) from the [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) package and with [BEAST2](http://www.beast2.org/):  
+- [all_filtered_align-linsi_trim05_mc09_mcmcTree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_mc09_mcmcTree.tre)  
+- [all_filtered_align-linsi_trim05_mc09_beast2.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_mc09_beast2.tre)  
   
 ## Resources  
 In this folder there are the [control](https://github.com/MiguelMSandin/radiolaria/tree/master/resources/molClock/mcmcTree) and [xml](https://github.com/MiguelMSandin/radiolaria/blob/master/resources/molClock/beast2/all_filtered_align-linsi_trim05_raxmlCAT_mc09_beast2.xml.gz) files to replicate molecular clock analyses, as well as a tsv version of the [calibration model](https://github.com/MiguelMSandin/radiolaria/blob/master/resources/molClock/fossil_calibrations.tsv), and the [metadata](https://github.com/MiguelMSandin/radiolaria/blob/master/resources/metabarcoding/metadata_assembled_nonRedundant.tsv) for metabarcoding analyses.  
