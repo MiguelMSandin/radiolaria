@@ -85,7 +85,7 @@ Using as REFERENCE sequences the complete PR2 v4.11.0 database and as NEW those 
   
   
 ### 4.3. Blasting
-A third in-house method was also used in order to detect as many chimeric or problematic sequences as possible. Here I blasted against NCBI independently the first and the last 300 bp of each sequence and compared the results. If there were less than 20 exact matches among the first 100 matches, the sequence was considered as *maybe* chimeric. If there are no exact matches among the first 100 matches, or it matches only with itself, the sequence was detected as *chimeric*. For further details see the script ‘[chimera_blast.R](https://github.com/MiguelMSandin/Radiolaria_reference/blob/master/scripts/chimera_blast.R)’ (*recommended to open it in Rstudio*). Sequences detected either as maybe chimeric or chimeric were noted and manually checked in downstream phylogenetic assessments.
+A third in-house method was also used in order to detect as many chimeric or problematic sequences as possible. Here I blasted against NCBI independently the first and the last 300 bp of each sequence and compared the results. If there were less than 20 exact matches among the first 100 matches, the sequence was considered as *maybe* chimeric. If there are no exact matches among the first 100 matches, or it matches only with itself, the sequence was detected as *chimeric*. For further details see the script ‘[chimera_blast.R](https://github.com/MiguelMSandin/radiolaria/blob/master/scripts/others/chimera_blast.R)’ (*recommended to open it in Rstudio*). Sequences detected either as maybe chimeric or chimeric were noted and manually checked in downstream phylogenetic assessments.
   
 ---
 ## Step 5. Annotating sequences
