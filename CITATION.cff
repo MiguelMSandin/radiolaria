@@ -1,0 +1,18 @@
+message: "If you use this repository, please cite it as below."
+"Sandin MM, Renaudie J, Suzuki N, Not F (2023). Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria. BioRxiv. "
+authors:
+  - family-names: Sandin
+    given-names: Miguel M.
+    orcid: https://orcid.org/0000-0002-0602-7613
+  - family-names: Renaudie
+    given-names: Johan
+    orcid: https://orcid.org/0000-0002-9107-1984
+  - family-names: Suzuki
+    given-names: Noritoshi
+    orcid: https://orcid.org/0000-0001-8421-3828
+  - family-names: Not
+    given-names: Fabrice
+    orcid: https://orcid.org/0000-0002-9342-195X
+title: Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria
+version: pre-print-v1
+date-released: 2023-12-XX
