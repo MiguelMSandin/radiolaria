@@ -1,18 +1,44 @@
+cff-version: 1.2.0
 message: "If you use this repository, please cite it as below."
 "Sandin MM, Renaudie J, Suzuki N, Not F (2023). Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria. BioRxiv. "
 authors:
-  - family-names: Sandin
-    given-names: Miguel M.
+  - family-names: "Sandin"
+    given-names: "Miguel M."
     orcid: https://orcid.org/0000-0002-0602-7613
-  - family-names: Renaudie
-    given-names: Johan
+  - family-names: "Renaudie"
+    given-names: "Johan"
     orcid: https://orcid.org/0000-0002-9107-1984
-  - family-names: Suzuki
-    given-names: Noritoshi
+  - family-names: "Suzuki"
+    given-names: "Noritoshi"
     orcid: https://orcid.org/0000-0001-8421-3828
-  - family-names: Not
-    given-names: Fabrice
+  - family-names: "Not"
+    given-names: "Fabrice"
     orcid: https://orcid.org/0000-0002-9342-195X
-title: Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria
+title: "Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria"
+doi: XXXXXX
 version: pre-print-v1
 date-released: 2023-12-XX
+url: XXXXXX
+preferred-citation:
+  type: article
+  - family-names: "Sandin"
+    given-names: "Miguel M."
+    orcid: https://orcid.org/0000-0002-0602-7613
+  - family-names: "Renaudie"
+    given-names: "Johan"
+    orcid: https://orcid.org/0000-0002-9107-1984
+  - family-names: "Suzuki"
+    given-names: "Noritoshi"
+    orcid: https://orcid.org/0000-0001-8421-3828
+  - family-names: "Not"
+    given-names: "Fabrice"
+    orcid: https://orcid.org/0000-0002-9342-195X
+  doi: "10.0000/00000"
+  journal: "BioRxiv"
+  month: XX
+  start: XX # First page number
+  end: XX # Last page number
+  title: "Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria"
+  issue: XX
+  volume: XX
+  year: 2023
