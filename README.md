@@ -16,8 +16,8 @@ In the folder [alignments](https://github.com/MiguelMSandin/radiolaria/tree/mast
 ## Editable trees resulted from phylogenetic and molecular-clock analyses  
 Here there are the phylogenetic trees in nexus format of the different phylogenetic analyses implemented in [RAxML](https://github.com/stamatak/standard-RAxML) under the nucleotide substitution model GTR+CAT over 1000 bootstraps, [RAxML-ng](https://github.com/amkozlov/raxml-ng) under the substitution model GTR+G and a third approach implemented in [IQ-Tree](http://www.iqtree.org/) under the model GTR+F+R10 (chosen based on the highest Bayesian Information Criterion from modelFinder):  
 - [all_filtered_align-linsi_trim05_raxmlCAT.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_raxmlCAT.tre)  
-- [all_filtered_align-linsi_trim05_raxml-ngGTR.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_raxml-ngGTR.tre)  
-- [all_filtered_align-linsi_trim05_iqtree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_iqtree.tre)  
+- [all_filtered_align-linsi_trim05_raxml-ngGTRg.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_raxml-ngGTRg.tre)  
+- [all_filtered_align-linsi_trim05_iqtreeGTRg.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_iqtreeGTRg.tre)  
   
 There are also available the fossil-calibrated trees obtained with [MCMCTree](http://abacus.gene.ucl.ac.uk/software/MCMCtree.Tutorials.pdf) from the [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) package and with [BEAST2](http://www.beast2.org/):  
 - [all_filtered_align-linsi_trim05_mc09_mcmcTree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_mc09_mcmcTree.tre)  
