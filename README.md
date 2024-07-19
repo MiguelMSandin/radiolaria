@@ -1,11 +1,11 @@
-# Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria
+# Diversity and evolution of Radiolaria: Beyond the stars of the ocean
   
 In this repository you will find all methods, resources and scripts used and described in the following paper:
 **REFERENCE**  
   
 Briefly:  
 ## Taxonomic curation of environmental sequences associated to Radiolaria  
-All environmental 18S rDNA sequences publicly available (as July 2020) were taxonomically curated as detailed in the [curation_pipeline.md](https://github.com/MiguelMSandin/radiolaria/blob/master/curation_pipeline.md) and publicly accessible in the Protist Ribosomal Reference (PR2) database (from [v4.14.0](https://github.com/pr2database/pr2database/releases/tag/v4.14.0)).  
+All environmental 18S rDNA sequences publicly available (as July 2020) associated to Radiolaria were taxonomically curated as detailed in the [curation_pipeline.md](https://github.com/MiguelMSandin/radiolaria/blob/master/curation_pipeline.md) and publicly accessible in the Protist Ribosomal Reference (PR2) database (from [v4.14.0](https://github.com/pr2database/pr2database/releases/tag/v4.14.0)). In addition, the near full length rDNA sequences from Jamy et al., ([2022](https://figshare.com/articles/dataset/Global_patterns_and_rates_of_habotat_transitions_across_the_eukaryotic_tree_of_life/15164772)) associated to Radiolaria were incorporated into our dataset.  
   
 ## Alignments for phylogenetic analyses  
 In the folder [alignments](https://github.com/MiguelMSandin/radiolaria/tree/master/alignments) there are:  
@@ -20,8 +20,8 @@ Here there are the phylogenetic trees in nexus format of the different phylogene
 - [all_filtered_align-linsi_trim05_iqtreeGTRg.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_iqtreeGTRg.tre)  
   
 There are also available the fossil-calibrated trees obtained with [MCMCTree](http://abacus.gene.ucl.ac.uk/software/MCMCtree.Tutorials.pdf) from the [PAML](http://abacus.gene.ucl.ac.uk/software/paml.html) package and with [BEAST2](http://www.beast2.org/):  
-- [all_filtered_align-linsi_trim05_mc09_mcmcTree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_mc09_mcmcTree.tre)  
-- [all_filtered_align-linsi_trim05_mc09_beast2.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_mc09_beast2.tre)  
+- [all_filtered_align-linsi_trim05_raxmlCAT_BEAST2.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_raxmlCAT_BEAST2.tre)  
+- [all_filtered_align-linsi_trim05_raxmlCAT_MCMCTree.tre](https://github.com/MiguelMSandin/radiolaria/tree/master/trees/all_filtered_align-linsi_trim05_raxmlCAT_MCMCTree.tre)  
   
 ## Resources  
 In this folder there are the [control](https://github.com/MiguelMSandin/radiolaria/tree/master/resources/molClock/mcmcTree) and [xml](https://github.com/MiguelMSandin/radiolaria/blob/master/resources/molClock/beast2/all_filtered_align-linsi_trim05_raxmlCAT_mc09_beast2.xml.gz) files to replicate molecular clock analyses, as well as a tsv version of the [calibration model](https://github.com/MiguelMSandin/radiolaria/blob/master/resources/molClock/fossil_calibrations.tsv), and the [metadata](https://github.com/MiguelMSandin/radiolaria/blob/master/resources/metabarcoding/metadata_assembled_nonRedundant.tsv) for metabarcoding analyses.  
