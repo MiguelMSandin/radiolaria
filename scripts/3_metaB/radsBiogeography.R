@@ -14,11 +14,11 @@ library(treemapify)
 #----
 #---- Preparing final tables -----------------------------------------------------------------------
 
-# setwd("~/rads/data/metaB/")
+# setwd("~/Desktop/PhD/0_Thesis/2_chapter/data/metaB/")
 # 
 # # Working with the TAXONOMIC table _________________________________________________________________
 # # Opening new taxonomic assignation
-# taxo = fread("", sep="\t")
+# taxo = fread("otus/radiolaria_otusTaxo_PR2v4.14rads_211216.tsv", sep="\t")
 # colnames(taxo) = c("md5sum", "target", "id", "alnlen", "mism", "opens", "qlo", "qhi", "tlo", "thi", "evalue", "bits")
 # 
 # # Remove certain fields from the taxonomy
@@ -40,18 +40,18 @@ library(treemapify)
 # 
 # # Working with the CHARACTERISTICS table ___________________________________________________________
 # # Opening characteristics of the OTUs
-# char = fread("")
+# char = fread("otus/radiolaria.otus.v20171106_chars.tsv")
 # 
 # 
 # # Working with the RAW ABUNDANCE tables ____________________________________________________________
 # # First estimating total eukaryotic reads
-# file = fread("")
+# file = fread("globaldataset.otus.v20171106.tsv")
 # total = select(file, -c("md5sum", "cid", "ctotab","abundance","sequence","pid","lineage","refs","taxogroup","chloroplast","symb_small","symb_host","silicification","calcification","strontification"))
 # total = as.data.frame(colSums(total))
 # write.table(total, "totalReads_per_sample.tsv", quote=FALSE, sep="\t", row.names=TRUE, col.names=FALSE)
 
 # # Opening otu table of Radiolaria
-# abun_raw = fread("")
+# abun_raw = fread("otus/radiolaria.otus.v20171106_table.tsv")
 # md5sum_raw = abun_raw$md5sum; abun_raw$md5sum = NULL
 # 
 # # Adding reads from duplicated columns
@@ -87,7 +87,7 @@ library(treemapify)
 # 
 # # Working with the MUMU ABUNDANCE tables ___________________________________________________________
 # # Opening mumu post-clustered otu table
-# abun_mumu = fread("")
+# abun_mumu = fread("otus/radiolaria_otus_mumu_abun.tsv")
 # md5sum_mumu = abun_mumu$md5sum; abun_mumu$md5sum = NULL
 # 
 # # Adding reads from duplicated columns
@@ -126,10 +126,10 @@ library(treemapify)
 #---- Setting names and variables ------------------------------------------------------------------
 
 rm(list=ls()[!ls() %in% c()])
-setwd("~/rads/data/metaB/")
+setwd("~/Desktop/PhD/0_Thesis/2_chapter/data/metaB/")
 
-files = list(otusTaxo="",
-			 env="")
+files = list(otusTaxo="data/rad_otus.tsv",
+			 env="raw/metadata_assembled_nonRedundant.tsv")
 
 filters = list(id=90,
                 tabun=10,
@@ -152,10 +152,13 @@ env = fread(files$env)
 abun = select(data, grep("TARA", names(data), value=TRUE))
 taxo = select(data, grep("TARA", names(data), value=TRUE, invert=TRUE))
 
+
 #----
 #---- Filtering table based on environmental data --------------------------------------------------
 
 envs = env
+
+# select only samples coming from net and pump
 
 # Select only samples coming from SRF, DCM and MES
 sort(table(envs$depth))
@@ -211,7 +214,7 @@ all(rownames(file_abun) == file_env$sample_ID)
 permanova = adonis2(file_abun ~ size_fraction, file_env, permutations=1000, method="jaccard")
 permanova
 cat("Percentage of variability explained by the selected variable is:  ", round(permanova$R2[1]*100, 2), "%\n", sep="")
-
+#
 #----
 #---- Size fractions -------------------------------------------------------------------------------
 
@@ -244,6 +247,7 @@ plot_treeMap_data = melt(as.data.table(plot_treeMap_data), id.vars=c("size_fract
 # Create factors for representation
 plot_treeMap_data$group = factor(plot_treeMap_data$group, levels=c("Acantharea", "Spumellaria", "Nassellaria", "Collodaria", "RAD-A", "RAD-B", "RAD-C", "Radiolaria_X"))
 plot_treeMap_data$size_fraction = factor(plot_treeMap_data$size_fraction, levels=c("0.8-3", "0.8-5", "5-20", "20-180", "180-2000"))
+
 
 # And plot
 (plot_treeMap = ggplot(plot_treeMap_data, aes(area=value, fill=group))+
@@ -405,6 +409,9 @@ pdf(paste("plot_abundancePerStation_depth_and_sizeFraction.pdf", sep=""), width=
 plot(plot_abun)
 dev.off()
 
+
+
+
 #----
 #---- Prepare ABUNDANCE file for Redundancy Analysis (RDA) -----------------------------------------
 
@@ -426,6 +433,13 @@ plot(file_abun_selection)
 file_abun_selection$level = 0.90 # We choose a treshold of 90%
 lines(file_abun_selection)
 file_abun = extract(file_abun_selection)
+
+# species_contribution = c()
+# for(i in 1:length(file_abun_selection$RV)){
+#     if(i == 1){species_contribution[i] = file_abun_selection$RV[[i]]
+#     }else{species_contribution[i] = file_abun_selection$RV[[i]] - file_abun_selection$RV[[i-1]]}
+# }; rm(i)
+# species_contribution = setNames(species_contribution, names(file_abun_selection$RV))
 
 # Remove empty rows
 file_abun = file_abun[rowSums(file_abun)!=0,]
@@ -483,6 +497,7 @@ if(!any(apply(file_env, 2, function(x) any(is.na(x))))){cat("All good! :)")}else
 # file_env$FilterA = file_env_qual$size_fraction
 file_env$FilterB = file_env_qual$depth
 
+
 #----
 #---- Redundancy Analysis (RDA) --------------------------------------------------------------------
 
@@ -491,9 +506,9 @@ rda_data = rda(file_abun~., file_env)
 # summary(rda_data)
 RsquareAdj(rda_data)
 
-# We use the ordistep function to select variables through permutation tests:
+# We use the ordistep function to select variables through permutation tests :
 (seed = sample(1:10^9, 1))
-TeachingDemos::char2seed(seed, set=TRUE) # Ordistep is a function involving randomness
+TeachingDemos::char2seed(seed, set=TRUE) # Ordistep is a function involving randomness so we set a seed for reproductability
 rda_both = ordistep(rda(file_abun~1, data=file_env), scope=formula(rda_data), direction="both", 
                      steps=10^8, # steps=10^8, pstep=5000
 					permutations = 10^4) # permutations = 10^4
@@ -520,6 +535,10 @@ cat("RDA R²:", round(RsquareAdj(rda_data)$adj.r.squared*100, 2), "% (unadjusted
 tmp = as.data.frame(scores(rda_data, choices=1:2, display="bp", scaling=2))
 tmp[order(tmp[,1]),]
 tmp[order(tmp[,2]),]
+
+
+
+#
 
 #---- Prepare files for plotting Redundancy Analysis (RDA) -----------------------------------------
 
@@ -564,6 +583,7 @@ plot_filter = as.data.frame(rda_data$CCA$centroids[,1:2])
 plot_filter$filter = gsub("Filter.","",rownames(plot_filter))
 # plot_filter$filter = factor(plot_filter$filter, levels=c("0.8-5", "5-20", "20-180", "180-2000"))
 plot_filter$filter = factor(plot_filter$filter, levels=c("SRF", "DCM", "MES"))
+
 
 #---- Plotting Redundancy Analysis (RDA) -----------------------------------------------------------
 
@@ -628,6 +648,7 @@ dev.off()
 # pdf(paste("station_names.pdf", sep=""), width=11.69, height=8.27, paper='special')
 # plot(tmp)
 # dev.off()
+
 
 #---- 
 load(file="RDA_speciesHellinger_envLog_id95_reads10_pres2.Rdata")
