@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this repository, please cite it as below."
+message: "If you use this repository, please cite it as below"
 "Sandin MM, Renaudie J, Suzuki N, Not F (2023). Diversity and evolution of Radiolaria: Beyond the stars of the ocean. BioRxiv."
 authors:
   - family-names: "Sandin"
@@ -14,10 +14,10 @@ authors:
   - family-names: "Not"
     given-names: "Fabrice"
     orcid: https://orcid.org/0000-0002-9342-195X
-title: "Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria"
+title: "Diversity and evolution of Radiolaria: Beyond the stars of the ocean"
 doi: XXXXXX
 version: pre-print-v1
-date-released: 2023-12-XX
+date-released: 2024-08-09
 url: XXXXXX
 preferred-citation:
   type: article
@@ -38,7 +38,7 @@ preferred-citation:
   month: XX
   start: XX # First page number
   end: XX # Last page number
-  title: "Beyond the stars of the ocean: Diversity and evolution of extant Radiolaria"
+  title: "Diversity and evolution of Radiolaria: Beyond the stars of the ocean"
   issue: XX
   volume: XX
-  year: 2023
+  year: 2024
