@@ -1,7 +1,8 @@
 # Diversity and evolution of Radiolaria: Beyond the stars of the ocean
   
-In this repository you will find all methods, resources and scripts used and described in the following paper:
+In this repository you will find all methods, resources and scripts used and described in the following paper:  
 Sandin MM, Renaudie J, Suzuki N, Not F. **Diversity and evolution of Radiolaria: Beyond the stars of the ocean**. bioRxiv 2024.10.02.614131; doi: [10.1101/2024.10.02.614131](https://doi.org/10.1101/2024.10.02.614131)  
+  
 [![DOI](https://zenodo.org/badge/277273766.svg)](https://zenodo.org/doi/10.5281/zenodo.13286956)  
   
 Briefly:  
