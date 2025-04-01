@@ -7,18 +7,21 @@ library(dplyr)
 library(vegan)
 library(pastecs)
 library(moments)
+library(labdsv)
 
 library(ggplot2)
 library(treemapify)
+library(ggradar)
+library(gghighlight)
 
 #----
 #---- Preparing final tables -----------------------------------------------------------------------
 
-# setwd("~/Desktop/PhD/0_Thesis/2_chapter/data/metaB/")
+# setwd("~/rads/data/metaB/")
 # 
 # # Working with the TAXONOMIC table _________________________________________________________________
 # # Opening new taxonomic assignation
-# taxo = fread("otus/radiolaria_otusTaxo_PR2v4.14rads_211216.tsv", sep="\t")
+# taxo = fread("", sep="\t")
 # colnames(taxo) = c("md5sum", "target", "id", "alnlen", "mism", "opens", "qlo", "qhi", "tlo", "thi", "evalue", "bits")
 # 
 # # Remove certain fields from the taxonomy
@@ -40,18 +43,18 @@ library(treemapify)
 # 
 # # Working with the CHARACTERISTICS table ___________________________________________________________
 # # Opening characteristics of the OTUs
-# char = fread("otus/radiolaria.otus.v20171106_chars.tsv")
+# char = fread("")
 # 
 # 
 # # Working with the RAW ABUNDANCE tables ____________________________________________________________
 # # First estimating total eukaryotic reads
-# file = fread("globaldataset.otus.v20171106.tsv")
+# file = fread("")
 # total = select(file, -c("md5sum", "cid", "ctotab","abundance","sequence","pid","lineage","refs","taxogroup","chloroplast","symb_small","symb_host","silicification","calcification","strontification"))
 # total = as.data.frame(colSums(total))
 # write.table(total, "totalReads_per_sample.tsv", quote=FALSE, sep="\t", row.names=TRUE, col.names=FALSE)
 
 # # Opening otu table of Radiolaria
-# abun_raw = fread("otus/radiolaria.otus.v20171106_table.tsv")
+# abun_raw = fread("")
 # md5sum_raw = abun_raw$md5sum; abun_raw$md5sum = NULL
 # 
 # # Adding reads from duplicated columns
@@ -87,7 +90,7 @@ library(treemapify)
 # 
 # # Working with the MUMU ABUNDANCE tables ___________________________________________________________
 # # Opening mumu post-clustered otu table
-# abun_mumu = fread("otus/radiolaria_otus_mumu_abun.tsv")
+# abun_mumu = fread("")
 # md5sum_mumu = abun_mumu$md5sum; abun_mumu$md5sum = NULL
 # 
 # # Adding reads from duplicated columns
@@ -126,7 +129,7 @@ library(treemapify)
 #---- Setting names and variables ------------------------------------------------------------------
 
 rm(list=ls()[!ls() %in% c()])
-setwd("~/Desktop/PhD/0_Thesis/2_chapter/data/metaB/")
+setwd("~/Documents/PhD/0_Thesis/2_chapter/data/metaB/")
 
 files = list(otusTaxo="data/rad_otus.tsv",
 			 env="raw/metadata_assembled_nonRedundant.tsv")
@@ -152,13 +155,10 @@ env = fread(files$env)
 abun = select(data, grep("TARA", names(data), value=TRUE))
 taxo = select(data, grep("TARA", names(data), value=TRUE, invert=TRUE))
 
-
 #----
 #---- Filtering table based on environmental data --------------------------------------------------
 
 envs = env
-
-# select only samples coming from net and pump
 
 # Select only samples coming from SRF, DCM and MES
 sort(table(envs$depth))
@@ -214,7 +214,7 @@ all(rownames(file_abun) == file_env$sample_ID)
 permanova = adonis2(file_abun ~ size_fraction, file_env, permutations=1000, method="jaccard")
 permanova
 cat("Percentage of variability explained by the selected variable is:  ", round(permanova$R2[1]*100, 2), "%\n", sep="")
-#
+
 #----
 #---- Size fractions -------------------------------------------------------------------------------
 
@@ -247,7 +247,6 @@ plot_treeMap_data = melt(as.data.table(plot_treeMap_data), id.vars=c("size_fract
 # Create factors for representation
 plot_treeMap_data$group = factor(plot_treeMap_data$group, levels=c("Acantharea", "Spumellaria", "Nassellaria", "Collodaria", "RAD-A", "RAD-B", "RAD-C", "Radiolaria_X"))
 plot_treeMap_data$size_fraction = factor(plot_treeMap_data$size_fraction, levels=c("0.8-3", "0.8-5", "5-20", "20-180", "180-2000"))
-
 
 # And plot
 (plot_treeMap = ggplot(plot_treeMap_data, aes(area=value, fill=group))+
@@ -349,9 +348,16 @@ file$contribution = file$rads/file$totalReads
 # Subset based on environmental data
 file = file[file$sample_ID %in% file_env$sample_ID,]
 
-cat("Radiolaria contribute an average ", round(mean(file$contribution*100), 2), 
-    "% (+-",round(sd(file$contribution*100), 2), "%) to the total eukaryotic community.\n  With a minimum of ",
-	round(min(file$contribution*100), 4), " and a maximum of ", round(max(file$contribution*100), 3), sep="")
+cat("Average contribution of Radiolaria ", round(mean(file$contribution*100), 2), "% (+-",round(sd(file$contribution*100), 2), "%) to the total eukaryotic community",
+    "\n  With a median of ", round(quantile(file$contribution*100, 0.5), 2), "% and the following percentiles:",
+    "\n    min:  ", round(min(file$contribution*100), 4), 
+    "\n    05th: ", round(quantile(file$contribution*100, 0.05), 2), 
+    "\n    25th: ", round(quantile(file$contribution*100, 0.25), 2), 
+    "\n    75th: ", round(quantile(file$contribution*100, 0.75), 2), 
+    "\n    95th: ", round(quantile(file$contribution*100, 0.95), 2), 
+    "\n    max:  ", round(max(file$contribution*100), 2), 
+    sep="")
+round(summary(file$contribution*100), 4)
 
 summary(file$contribution)
 ggplot(file, aes(x=contribution)) + 
@@ -409,7 +415,256 @@ pdf(paste("plot_abundancePerStation_depth_and_sizeFraction.pdf", sep=""), width=
 plot(plot_abun)
 dev.off()
 
+#----
+#---- Find indicator species of depth clases -------------------------------------------------------
 
+file_abun = abuns
+file_taxo = taxos
+file_env = envs
+
+tmp = names(file_abun)
+file_abun = as.data.table(t(file_abun))
+colnames(file_abun) = file_taxo$name
+rownames(file_abun) = tmp
+
+
+file_env = file_env %>% select(c(sample_ID, depth_nominal))
+file_env$depthClass = fifelse(file_env$depth_nominal < 10, "1", 
+							  fifelse(file_env$depth_nominal < 200, "2", 
+							  		fifelse(file_env$depth_nominal >= 200, "3", "Other")))
+file_env$depthClass = as.numeric(file_env$depthClass)
+table(file_env$depthClass)
+
+cat("Numeric cluster for idnval:\n1\tsurface\n2\tepipelagic\n3\tmesopelagic")
+
+all(rownames(file_abun) == file_env$sample_ID)
+
+indicator = indval(file_abun, file_env$depthClass, numitr=10000)
+
+summary(indicator)
+
+# And now plotting
+indicatordf = data.frame(lineage = gsub(".*\\|", "", rownames(indicator$indval)),
+						 Surface=indicator$indval[,1],
+						 Epipelagic=indicator$indval[,2],
+						 Mesopelagic=indicator$indval[,3],
+						 indicator=indicator$indcls,
+						 probability=indicator$pval,
+						 group = gsub("\\|.*", "", rownames(indicator$indval)))
+{indicatordf$colour = indicatordf$group
+	indicatordf$colour[grepl("Nassellaria", indicatordf$colour)]="springgreen3"
+	indicatordf$colour[grepl("Acantharea", indicatordf$colour)]="yellow3"
+	indicatordf$colour[grepl("Spumellaria", indicatordf$colour)]="steelblue3"
+	indicatordf$colour[grepl("Collodaria", indicatordf$colour)]="orangered3"
+	indicatordf$colour[grepl("RAD-A", indicatordf$colour)]="grey30"
+	indicatordf$colour[grepl("RAD-B", indicatordf$colour)]="purple3"
+	indicatordf$colour[grepl("RAD-C", indicatordf$colour)]="grey60"
+	indicatordf$colour[grepl("Radiolaria_X", indicatordf$colour)]="grey80"}
+
+indicatordf = melt(as.data.table(indicatordf), id.vars=c("group", "colour", "lineage", "indicator", "probability"))
+
+(indicatorboxplot = ggplot(indicatordf, aes(x=group, y=value, fill=variable))+
+		geom_boxplot()+
+		scale_fill_manual(values=c("darkslategray1", "darkslategray3", "darkslategray"))+
+		theme_bw())
+
+indicatordf$lineage = factor(indicatordf$lineage, 
+							 levels=c(gsub(".*\\|", "", rownames(indicator$indval))[order(indicator$indcls, decreasing=TRUE)]))
+(indicatorbarplot = ggplot(indicatordf, aes(x=lineage, weight=value, fill=variable))+
+		geom_bar(position = position_stack())+
+		facet_grid(~group, scales="free", space="free")+
+		scale_fill_manual(values=c("darkslategray1", "darkslategray3", "darkslategray"))+
+		theme(axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1))+
+		theme_bw())
+
+# Radar plot
+indicatordf = data.frame(lineage = gsub(".*\\|", "", rownames(indicator$indval)),
+						 Surface=indicator$indval[,1],
+						 Epipelagic=indicator$indval[,2],
+						 Mesopelagic=indicator$indval[,3],
+						 indicator=indicator$indcls,
+						 probability=indicator$pval,
+						 group = gsub("\\|.*", "", rownames(indicator$indval)))
+# indicatordf = subset(indicatordf, indicator >= 0.5 & probability < 0.05)
+{indicatordf$colour = indicatordf$group
+	indicatordf$colour[grepl("Nassellaria", indicatordf$colour) & indicatordf$probability >= 0.01]="springgreen1"
+	indicatordf$colour[grepl("Nassellaria", indicatordf$colour) & indicatordf$probability < 0.01]="springgreen3"
+	indicatordf$colour[grepl("Acantharea", indicatordf$colour) & indicatordf$probability >= 0.01]="yellow1"
+	indicatordf$colour[grepl("Acantharea", indicatordf$colour) & indicatordf$probability < 0.01]="yellow3"
+	indicatordf$colour[grepl("Spumellaria", indicatordf$colour) & indicatordf$probability >= 0.01]="steelblue1"
+	indicatordf$colour[grepl("Spumellaria", indicatordf$colour) & indicatordf$probability < 0.01]="steelblue3"
+	indicatordf$colour[grepl("Collodaria", indicatordf$colour) & indicatordf$probability >= 0.01]="orangered1"
+	indicatordf$colour[grepl("Collodaria", indicatordf$colour) & indicatordf$probability < 0.01]="orangered3"
+	indicatordf$colour[grepl("RAD-A", indicatordf$colour) & indicatordf$probability >= 0.01]="grey50"
+	indicatordf$colour[grepl("RAD-A", indicatordf$colour) & indicatordf$probability < 0.01]="grey30"
+	indicatordf$colour[grepl("RAD-B", indicatordf$colour) & indicatordf$probability >= 0.01]="purple1"
+	indicatordf$colour[grepl("RAD-B", indicatordf$colour) & indicatordf$probability < 0.01]="purple3"
+	indicatordf$colour[grepl("RAD-C", indicatordf$colour) & indicatordf$probability >= 0.01]="grey70"
+	indicatordf$colour[grepl("RAD-C", indicatordf$colour) & indicatordf$probability < 0.01]="grey60"
+	indicatordf$colour[grepl("Radiolaria_X", indicatordf$colour) & indicatordf$probability >= 0.01]="grey90"
+	indicatordf$colour[grepl("Radiolaria_X", indicatordf$colour) & indicatordf$probability < 0.01]="grey80"}
+
+ggradar(indicatordf[,1:4], 
+		values.radar = c(0, 0.5, 1),
+		axis.labels = c("Surface", "Epipelagic", "Mesopelagic"),
+		group.colours = indicatordf$colour,
+		legend.position = "None",
+		fill.alpha = 0.2, fill=FALSE)
+
+
+pdf(paste("indicator_species_depth.pdf", sep=""), width=11.69*2, height=12, paper='special')
+plot(indicatorboxplot)
+plot(indicatorbarplot)
+for(i in unique(indicatordf$group)){
+	ss = subset(indicatordf, group == i)
+	tmp = ss$colour
+	radar = ggradar(ss[,1:4], 
+			values.radar = c(0, 0.5, 1),
+			axis.labels = c("Surface", "Epipelagic", "Mesopelagic"),
+			group.colours = tmp,
+			plot.title = paste0(i),
+			# legend.position = "none",
+			fill.alpha = 0.2, fill=FALSE)
+	plot(radar)
+}; rm(i, ss, tmp)
+dev.off()
+
+#
+
+#---- Find indicator species of latitudinal clases -------------------------------------------------
+
+file_abun = abuns
+file_taxo = taxos
+file_env = envs
+
+tmp = names(file_abun)
+file_abun = as.data.table(t(file_abun))
+colnames(file_abun) = file_taxo$name
+rownames(file_abun) = tmp
+
+file_env = file_env %>% select(c(sample_ID, latitude))
+ggplot(file_env, aes(x=latitude))+geom_histogram()
+summary(file_env$latitude)
+file_env$class = fifelse(abs(file_env$latitude) <= 23.43614, "1", 
+							  fifelse(abs(file_env$latitude) <= 66.56386, "2", 
+							  		fifelse(abs(file_env$latitude) > 66.56386, "3", "Other")))
+file_env$class = as.numeric(file_env$class)
+table(file_env$class)
+
+cat("Numeric cluster for idnval:\n1\ttropical\n2\ttemperate\n3\tarctic")
+
+all(rownames(file_abun) == file_env$sample_ID)
+
+# Remove NAs
+any(is.na(file_env$latitude))
+tmp = file_env$sample_ID[is.na(file_env$latitude)]
+file_abun = file_abun[rownames(file_abun) != tmp]
+file_env = subset(file_env, sample_ID != tmp)
+
+indicator = indval(file_abun, file_env$class, numitr=10000)
+
+summary(indicator)
+
+# And now plotting
+
+indicatordf = data.frame(lineage = gsub(".*\\|", "", rownames(indicator$indval)),
+						 Tropical=indicator$indval[,1],
+						 Temperate=indicator$indval[,2],
+						 Arctic=indicator$indval[,3],
+						 indicator=indicator$indcls,
+						 probability=indicator$pval,
+						 group = gsub("\\|.*", "", rownames(indicator$indval)))
+{indicatordf$colour = indicatordf$group
+	indicatordf$colour[grepl("Nassellaria", indicatordf$colour)]="springgreen3"
+	indicatordf$colour[grepl("Acantharea", indicatordf$colour)]="yellow3"
+	indicatordf$colour[grepl("Spumellaria", indicatordf$colour)]="steelblue3"
+	indicatordf$colour[grepl("Collodaria", indicatordf$colour)]="orangered3"
+	indicatordf$colour[grepl("RAD-A", indicatordf$colour)]="grey30"
+	indicatordf$colour[grepl("RAD-B", indicatordf$colour)]="purple3"
+	indicatordf$colour[grepl("RAD-C", indicatordf$colour)]="grey60"
+	indicatordf$colour[grepl("Radiolaria_X", indicatordf$colour)]="grey80"}
+
+indicatordf = melt(as.data.table(indicatordf), id.vars=c("group", "colour", "lineage", "indicator", "probability"))
+
+(indicatorboxplot = ggplot(indicatordf, aes(x=group, y=value, fill=variable))+
+		geom_boxplot()+
+		scale_fill_manual(values=c("darkslategray1", "darkslategray3", "darkslategray"))+
+		theme_bw())
+
+indicatordf$lineage = factor(indicatordf$lineage, 
+							 levels=c(gsub(".*\\|", "", rownames(indicator$indval))[order(indicator$indcls, decreasing=TRUE)]))
+(indicatorbarplot = ggplot(indicatordf, aes(x=lineage, weight=value, fill=variable))+
+		geom_bar(position = position_stack())+
+		facet_grid(~group, scales="free", space="free")+
+		scale_fill_manual(values=c("darkslategray1", "darkslategray3", "darkslategray"))+
+		theme(axis.text.x = element_text(angle = 30, hjust = 1, vjust = 1)))
+
+library(ggradar)
+indicatordf = data.frame(lineage = gsub(".*\\|", "", rownames(indicator$indval)),
+						 Tropical=indicator$indval[,1],
+						 Temperate=indicator$indval[,2],
+						 Arctic=indicator$indval[,3],
+						 indicator=indicator$indcls,
+						 probability=indicator$pval,
+						 group = gsub("\\|.*", "", rownames(indicator$indval)))
+{indicatordf$colour = indicatordf$group
+	indicatordf$colour[grepl("Nassellaria", indicatordf$colour) & indicatordf$probability >= 0.01]="springgreen1"
+	indicatordf$colour[grepl("Nassellaria", indicatordf$colour) & indicatordf$probability < 0.01]="springgreen3"
+	indicatordf$colour[grepl("Acantharea", indicatordf$colour) & indicatordf$probability >= 0.01]="yellow1"
+	indicatordf$colour[grepl("Acantharea", indicatordf$colour) & indicatordf$probability < 0.01]="yellow3"
+	indicatordf$colour[grepl("Spumellaria", indicatordf$colour) & indicatordf$probability >= 0.01]="steelblue1"
+	indicatordf$colour[grepl("Spumellaria", indicatordf$colour) & indicatordf$probability < 0.01]="steelblue3"
+	indicatordf$colour[grepl("Collodaria", indicatordf$colour) & indicatordf$probability >= 0.01]="orangered1"
+	indicatordf$colour[grepl("Collodaria", indicatordf$colour) & indicatordf$probability < 0.01]="orangered3"
+	indicatordf$colour[grepl("RAD-A", indicatordf$colour) & indicatordf$probability >= 0.01]="grey50"
+	indicatordf$colour[grepl("RAD-A", indicatordf$colour) & indicatordf$probability < 0.01]="grey30"
+	indicatordf$colour[grepl("RAD-B", indicatordf$colour) & indicatordf$probability >= 0.01]="purple1"
+	indicatordf$colour[grepl("RAD-B", indicatordf$colour) & indicatordf$probability < 0.01]="purple4"
+	indicatordf$colour[grepl("RAD-C", indicatordf$colour) & indicatordf$probability >= 0.01]="grey70"
+	indicatordf$colour[grepl("RAD-C", indicatordf$colour) & indicatordf$probability < 0.01]="grey60"
+	indicatordf$colour[grepl("Radiolaria_X", indicatordf$colour) & indicatordf$probability >= 0.01]="grey90"
+	indicatordf$colour[grepl("Radiolaria_X", indicatordf$colour) & indicatordf$probability < 0.01]="grey80"}
+
+# indicatordf = subset(indicatordf, indicator >= 0.5 & probability < 0.05)
+
+ggradar(indicatordf[,1:4], 
+		values.radar = c(0, 0.5, 1),
+		axis.labels = c("Tropical", "Temperate", "Arctic"),
+		group.colours = indicatordf$colour,
+		legend.position = "None",
+		fill.alpha = 0.2, fill=FALSE)
+
+
+pdf(paste("indicator_species_latitud.pdf", sep=""), width=11.69*2, height=12, paper='special')
+plot(indicatorboxplot)
+plot(indicatorbarplot)
+for(i in unique(indicatordf$group)){
+	ss = subset(indicatordf, group == i)
+	tmp = ss$colour
+	radar = ggradar(ss[,1:4], 
+					values.radar = c(0, 0.5, 1),
+					axis.labels = c("Tropical", "Temperate", "Arctic"),
+					group.colours = tmp,
+					plot.title = paste0(i),
+					# legend.position = "none",
+					fill.alpha = 0.2, fill=FALSE)
+	plot(radar)
+}; rm(i, ss, tmp)
+dev.off()
+
+#
+
+#---- Read the dataset of indicatot values ---------------------------------------------------------
+
+indval = fread("../../figs_and_tables/SupMat_table_S4/SupMat_table_S4_indicator_values.tsv")
+
+table(subset(indval, indicator_value >= 0.5 & probability <= 0.01 & cluster == "Mesopelagic")$group)
+table(subset(indval, indicator_value >= 0.5 & probability <= 0.01 & cluster == "tropical")$group)
+
+indvals = subset(indval, strong_indicator == "yes") %>% group_by(group, cluster) %>% summarise(count=length(unique(lineage)))
+
+ggplot(indvals, aes(x=group, y=cluster, size=count))+
+	geom_point()
 
 
 #----
@@ -433,13 +688,6 @@ plot(file_abun_selection)
 file_abun_selection$level = 0.90 # We choose a treshold of 90%
 lines(file_abun_selection)
 file_abun = extract(file_abun_selection)
-
-# species_contribution = c()
-# for(i in 1:length(file_abun_selection$RV)){
-#     if(i == 1){species_contribution[i] = file_abun_selection$RV[[i]]
-#     }else{species_contribution[i] = file_abun_selection$RV[[i]] - file_abun_selection$RV[[i-1]]}
-# }; rm(i)
-# species_contribution = setNames(species_contribution, names(file_abun_selection$RV))
 
 # Remove empty rows
 file_abun = file_abun[rowSums(file_abun)!=0,]
@@ -497,7 +745,6 @@ if(!any(apply(file_env, 2, function(x) any(is.na(x))))){cat("All good! :)")}else
 # file_env$FilterA = file_env_qual$size_fraction
 file_env$FilterB = file_env_qual$depth
 
-
 #----
 #---- Redundancy Analysis (RDA) --------------------------------------------------------------------
 
@@ -506,9 +753,9 @@ rda_data = rda(file_abun~., file_env)
 # summary(rda_data)
 RsquareAdj(rda_data)
 
-# We use the ordistep function to select variables through permutation tests :
+# We use the ordistep function to select variables through permutation tests:
 (seed = sample(1:10^9, 1))
-TeachingDemos::char2seed(seed, set=TRUE) # Ordistep is a function involving randomness so we set a seed for reproductability
+TeachingDemos::char2seed(seed, set=TRUE) # Ordistep is a function involving randomness
 rda_both = ordistep(rda(file_abun~1, data=file_env), scope=formula(rda_data), direction="both", 
                      steps=10^8, # steps=10^8, pstep=5000
 					permutations = 10^4) # permutations = 10^4
@@ -535,10 +782,6 @@ cat("RDA R²:", round(RsquareAdj(rda_data)$adj.r.squared*100, 2), "% (unadjusted
 tmp = as.data.frame(scores(rda_data, choices=1:2, display="bp", scaling=2))
 tmp[order(tmp[,1]),]
 tmp[order(tmp[,2]),]
-
-
-
-#
 
 #---- Prepare files for plotting Redundancy Analysis (RDA) -----------------------------------------
 
@@ -583,7 +826,6 @@ plot_filter = as.data.frame(rda_data$CCA$centroids[,1:2])
 plot_filter$filter = gsub("Filter.","",rownames(plot_filter))
 # plot_filter$filter = factor(plot_filter$filter, levels=c("0.8-5", "5-20", "20-180", "180-2000"))
 plot_filter$filter = factor(plot_filter$filter, levels=c("SRF", "DCM", "MES"))
-
 
 #---- Plotting Redundancy Analysis (RDA) -----------------------------------------------------------
 
@@ -648,7 +890,6 @@ dev.off()
 # pdf(paste("station_names.pdf", sep=""), width=11.69, height=8.27, paper='special')
 # plot(tmp)
 # dev.off()
-
 
 #---- 
 load(file="RDA_speciesHellinger_envLog_id95_reads10_pres2.Rdata")
