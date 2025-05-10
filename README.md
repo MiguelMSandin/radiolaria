@@ -3,6 +3,7 @@
 In this repository you will find all methods, resources and scripts used and described in the following paper:  
   
 Sandin MM, Renaudie J, Suzuki N, Not F. **Diversity and evolution of Radiolaria: Beyond the stars of the ocean**. bioRxiv 2024.10.02.614131; doi: [10.1101/2024.10.02.614131](https://doi.org/10.1101/2024.10.02.614131)  
+Sandin MM, Renaudie J, Suzuki N, Not F (2025) **Extant diversity, biogeography, and evolutionary history of Radiolaria**. *Curr. Biol. in press*. doi: [10.1016/j.cub.2025.04.032](https://doi.org/10.1016/j.cub.2025.04.032) | [PDF](https://www.cell.com/current-biology/fulltext/S0960-9822(25)00495-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0960982225004956%3Fshowall%3Dtrue#) | [Preprint](https://www.biorxiv.org/content/10.1101/2024.10.02.614131v1)  
   
 [![DOI](https://zenodo.org/badge/277273766.svg)](https://zenodo.org/doi/10.5281/zenodo.13286956)  
   
